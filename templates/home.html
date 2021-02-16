@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modal</title>
+    <!-- font awesome -->
+    <link rel="stylesheet" href="static/all.min.css"/>
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+    <!-- styles -->
+    <link rel="stylesheet" href="static/styles.css" />
+    
+  </head>
+  <body>
+    <!-- hero -->
+    <header class="hero">
+      <div class="banner">
+        <h1>Modal Project</h1>
+        <button class="btn modal-btn">
+          open modal
+        </button>
+      </div>
+    </header>
+    <!-- end of hero -->
+    <!-- modal -->
+    <div class="modal-overlay">
+      <div class="modal-container" style="height:70vh">
+        <form action="/test" method="post">
+          <h3>New Bot</h3>
+          <p class="hint-text">Enter accurate details below.</p>
+          <div class="form-group">
+            <div class="row">
+              <div class="col"><input type="text" class="form-control" name="api_key" placeholder="Enter API KEY"
+                  required="required" autofocus></div>
+              <div class="col"><input type="text" class="form-control" name="secret_key" placeholder="Enter SECRET KEY"
+                  required="required"></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <select id="product" class="form-control" name="product">
+              <option value="ALGOEUR">ALGO/EUR</option>
+              <option value="ALGOGBP">ALGO/GBP</option>
+              <option value="ALGOUSD">ALGO/USD</option>
+              <option value="ATOMBTC">ATOM/BTC</option>
+              <option value="ATOMUSD">ATOM/USD</option>
+              <option value="BALBTC">BAL/BTC</option>
+              <option value="BALUSD">BAL/USD</option>
+              <option value="BANDBTC">BAND/BTC</option>
+              <option value="BANDEUR">BAND/EUR</option>
+              <option value="BANDGBP">BAND/GBP</option>
+              <option value="BANDUSD">BAND/USD</option>
+              <option value="BATETH">BAT/ETH</option>
+              <option value="BATUSDC">BAT/USDC</option>
+              <option value="BCHBTC">BCH/BTC</option>
+              <option value="BCHEUR">BCH/EUR</option>
+              <option value="BCHGBP">BCH/GBP</option>
+              <option value="BCHUSD">BCH/USD</option>
+              <option value="BTCEUR">BTC/EUR</option>
+              <option value="BTCGBP">BTC/GBP</option>
+              <option value="BTCUSDT">BTC/USDT</option>
+              <option value="BTCUSDC">BTC/USDC</option>
+              <option value="CGLDBTC">CGLD/BTC</option>
+              <option value="CGLDEUR">CGLD/EUR</option>
+              <option value="CGLDGBP">CGLD/GBP</option>
+              <option value="CGLDUSD">CGLD/USD</option>
+              <option value="COMPBTC">COMP/BTC</option>
+              <option value="COMP-USD">COMP/USD</option>
+              <option value="CVC-USDC">CVC/USDC</option>
+              <option value="DAI-USD">DAI/USD</option>
+              <option value="DAI-USDC">DAI/USDC</option>
+              <option value="DASH-BTC">DASH/BTC</option>
+              <option value="DASH-USD">DASH/USD</option>
+              <option value="DNT-USDC">DNT/USDC</option>
+              <option value="EOS-BTC">EOS/BTC</option>
+              <option value="EOS-EUR">EOS/EUR</option>
+              <option value="EOS-USD">EOS/USD</option>
+              <option value="ETC-BTC">ETC/BTC</option>
+              <option value="ETC-EUR">ETC/EUR</option>
+              <option value="ETC-GBP">ETC/GBP</option>
+              <option value="ETC-USD">ETC/USD</option>
+              <option value="ETH-BTC">ETH/BTC</option>
+              <option value="ETH-DAI">ETH/DAI</option>
+              <option value="ETH-EUR">ETH/EUR</option>
+              <option value="ETH-GBP">ETH/GBP</option>
+              <option value="ETH-USD">ETH/USD</option>
+              <option value="ETH-USDC">ETH/USDC</option>
+              <option value="GNT-USDC">GNT/USDC</option>
+              <option value="KNC-BTC">KNC/BTC</option>
+              <option value="KNC-USD">KNC/USD</option>
+              <option value="LINK-ETH">LINK/ETH</option>
+              <option value="LINK-EUR">LINK/EUR</option>
+              <option value="LINK-GBP">LINK/GBP</option>
+              <option value="LINK-USD">LINK/USD</option>
+              <option value="LOOM-USDC">LOOM/USDC</option>
+              <option value="LRC-USD">LRC/USD</option>
+              <option value="LTC-BTC">LTC/BTC</option>
+              <option value="LTC-EUR">LTC/EUR</option>
+              <option value="LTC-GBP">LTC/GBP</option>
+              <option value="LTC-USD">LTC/USD</option>
+              <option value="MANA-USDC">MANA/USDC</option>
+              <option value="MKR-BTC">MKR/BTC</option>
+              <option value="MKR-USD">MKR/USD</option>
+              <option value="NMR-BTC">NMR/BTC</option>
+              <option value="NMR-EUR">NMR/EUR</option>
+              <option value="NMR-GBP">NMR/GBP</option>
+              <option value="NMR-USD">NMR/USD</option>
+              <option value="OMG-BTC">OMG/BTC</option>
+              <option value="OMG-EUR">OMG/EUR</option>
+              <option value="OMG-GBP">OMG/GBP</option>
+              <option value="OMG-USD">OMG/USD</option>
+              <option value="OXT-USD">OXT/USD</option>
+              <option value="REN-BTC">REN/BTC</option>
+              <option value="REN-USD">REN/USD</option>
+              <option value="REP-BTC">REP/BTC</option>
+              <option value="REP-USD">REP/USD</option>
+              <option value="UMA-BTC">UMA/BTC</option>
+              <option value="UMA-EUR">UMA/EUR</option>
+              <option value="UMA-GBP">UMA/GBP</option>
+              <option value="UMA-USD">UMA/USD</option>
+              <option value="UNI-USD">UNI/USD</option>
+              <option value="WBTC-BTC">WBTC/BTC</option>
+              <option value="WBTC-USD">WBTC/USD</option>
+              <option value="XLM-BTC">XLM/BTC</option>
+              <option value="XLM-EUR">XLM/EUR</option>
+              <option value="XLM-USD">XLM/USD</option>
+              <option value="XRP-BTC">XRP/BTC</option>
+              <option value="XRP-EUR">XRP/EUR</option>
+              <option value="XRP-GBP">XRP/GBP</option>
+              <option value="XRP-USD">XRP/USD</option>
+              <option value="XTZ-BTC">XTZ/BTC</option>
+              <option value="XTZ-EUR">XTZ/EUR</option>
+              <option value="XTZ-GBP">XTZ/GBP</option>
+              <option value="XTZ-USD">XTZ/USD</option>
+              <option value="YFI-USD">YFI/USD</option>
+              <option value="ZEC-BTC">ZEC/BTC</option>
+              <option value="ZEC-USDC">ZEC/USDC</option>
+              <option value="ZRX-BTC">ZRX/BTC</option>
+              <option value="ZRX-EUR">ZRX/EUR</option>
+              <option value="ZRX-USD">ZRX/USD</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <input type="number" step="0.01" class="form-control" name="margin_p" placeholder="Enter Buy Margin Percent"
+              required="required">
+          </div>
+          <div class="form-group">
+            <input type="number" step="0.01" class="form-control" name="sell_p" placeholder="Enter Sell Percent"
+              required="required">
+          </div>
+          <div class="form-group">
+            <input type="number" class="form-control" name="trades" placeholder="Enter Number of Trades "
+              required="required">
+          </div>
+          <div class="form-group">
+            <button type="submit" id="submit" class="btn btn-success btn-lg btn-block">START</button>
+          </div>
+        </form>
+        <button class="close-btn">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+    <!-- javascript -->
+  <script src="{{ url_for('static', filename='all.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='jquery.js') }}"></script>
+  <script src="{{ url_for('static', filename='bootstrap.js') }}"></script>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+  <script>
+    const btn = document.querySelector("#submit");
+    btn.addEventListener("click",(e) => {
+      console.log("I was just clicked")
+      e.preventDefault()
+      let modal = document.querySelector(".modal-overlay");
+      modal.classList.remove("open-modal")
+      let inputs = document.querySelectorAll("input")
+      inputs.forEach(element => {
+        element.value = ""
+      });
+  
+    })
+  </script>
+  </body>
+</html>

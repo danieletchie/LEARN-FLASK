@@ -1,0 +1,8 @@
+
+{% block content %}
+<h2>WELCOME TO START PAGE</h2>
+<h6>YOUR BOT IS RUNNING</h6>
+<button><a href="test">CLICK ME</a></button>
+
+{{  current.Current(users["api_key"], users["secret_key"], users["product"], users["margin_p"], users["sell_p"], users["trades"])  }}
+{% endblock %}
