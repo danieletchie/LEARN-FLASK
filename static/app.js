@@ -10,9 +10,9 @@ const modalToggle = () => modal.classList.toggle("open-modal");
 const btn = document.querySelector("#run");
 const run = document.querySelector("#running")
 
+console.log("starting")
 
-btn.addEventListener("click", (e) => {
-    console.log("I was just clicked")
+btn.addEventListener("click", (e) => 
     const my_Form = document.getElementById("form")
     e.preventDefault()
     let modal = document.querySelector(".modal-overlay");

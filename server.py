@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return render_template("home.html")
+    return render_template("index.html")
 
 
 @app.route("/test", methods=["POST", "GET"])
@@ -15,15 +15,16 @@ def test():
         api_key = request.form["api_key"]
         secret_key = request.form["secret_key"]
         product = request.form["product"]
+        quantity = request.form["quantity"]
         margin_p = float(request.form["margin_p"])
         sell_p = float(request.form["sell_p"])
         trades = int(request.form["trades"])
-        users = {"api_key": api_key, "secret_key": secret_key, "product": product,
+        users = {"api_key": api_key, "secret_key": secret_key, "product": product, "quantity": quantity,
                  "margin_p": margin_p, "sell_p": sell_p, "trades": trades}
         checker = True
 
         # , test= Test, users = users, current= A)
-        return render_template('home.html', checker= checker, users = users, current= A)
+        return render_template('index.html', checker= checker, users = users, current= A)
     else:
         return redirect(url_for("index"))
 
