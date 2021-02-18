@@ -13,8 +13,9 @@ const run = document.querySelector("#running")
 console.log("starting")
 
 btn.addEventListener("click", (e) => {
-    my_Form = document.getElementById("form");
     e.preventDefault();
+    attrib = run.getAttribute("hidden")
+    console.log(attrib)
     run.removeAttribute("hidden");
     console.log(my_Form);
     my_Form.submit();
