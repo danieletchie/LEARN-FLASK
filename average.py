@@ -78,8 +78,8 @@ def Current(api_key, secret_key, product, quantity, margin_p, sell_p, trades):
                             time.sleep(20)
 
                     break
-        except Exception:
-            print("There was an error retryin ASAP")
+        except Exception as e:
+            print(f"{e} \n There was an error retryin ASAP")
             time.sleep(10)
             continue
         break
