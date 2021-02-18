@@ -12,14 +12,13 @@ const run = document.querySelector("#running")
 
 console.log("starting")
 
-btn.addEventListener("click", (e) => 
-    const my_Form = document.getElementById("form")
-    e.preventDefault()
-    let modal = document.querySelector(".modal-overlay");
-    run.removeAttribute("hidden")
-    console.log(my_Form)
-    my_Form.submit()
-    console.log("done")
+btn.addEventListener("click", (e) => {
+    my_Form = document.getElementById("form");
+    e.preventDefault();
+    run.removeAttribute("hidden");
+    console.log(my_Form);
+    my_Form.submit();
+    console.log("done");
     modal.classList.remove("open-modal")
     let inputs = document.querySelectorAll("input")
     console.log("done")
