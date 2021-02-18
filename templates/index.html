@@ -1,53 +1,56 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.80.0">
-    <title>Signin Template · Bootstrap v4.6</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MAXIBOT</title>
+  <!-- font awesome -->
+  <link rel="stylesheet" href="static/all.min.css" />
+  <link rel="stylesheet" href="static/css/bootstrap.min.css">
+  <!-- styles -->
+  <link rel="stylesheet" href="static/styles.css" />
 
-
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
-
-
-
-    <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
-        }
-    </style>
-
-
-    <!-- Custom styles for this template -->
-    <link href="static/signin.css" rel="stylesheet">
 </head>
 
-<body class="text-center">
-
-    <form class="form-signin" action="./start" method="POST" >
-        <img class="mb-4" src="../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-        <h1 class="h3 mb-3 font-weight-normal">WELCOME </h1>
-        <label for="api_key" class="form-label">API_key</label>
-        <input type="text" id="api_key" name="api_key" class="form-control" placeholder="API KEY" required autofocus>
-        <label for="secret_key" >Secret_key</label>
-        <input type="text" id="secret_key" name="secret_key" class="form-control" placeholder="SECRET KEY" required>
-        <label for="product" >Select product</label>
-        <select id="product" class="form-control" name="product">
+<body>
+  <!-- hero -->
+  <header class="hero">
+    <div class="banner">
+      <h2>WELCOME TO MAXIBOT</h2>
+      <p>Earn more without stress and headaches</p>
+      <button class="btn modal-btn">
+        NEW BOT
+      </button><br><br>
+      {% if checker == True %}
+      {% block content %}
+      <div id="running" class="align-items-center">
+        <strong style="font-size: 1.5rem;">BOT IS CURRENTLY RUNNING PLEASE WAIT</strong>
+        <div class="spinner-border" style="width: 2rem; height: 2rem;" role="status" aria-hidden="true"></div>
+      </div>
+      {% endblock content %}
+      {% endif %}
+    </div>
+  </header>
+  <!-- end of hero -->
+  <!-- modal -->
+  <div class="modal-overlay">
+    <div class="modal-container" style="height:70vh">
+      <form id="form" action="/test" method="post">
+        <h3>CREATE NEW BOT</h3>
+        <p class="hint-text">Enter accurate details below.</p>
+        <p><strong>Note:</strong> Only Current Price Strategy currently
+          working</p>
+        <div class="form-group">
+          <div class="row">
+            <div class="col"><input type="text" class="form-control" name="api_key" placeholder="Enter API KEY"
+                required="required" autofocus></div>
+            <div class="col"><input type="text" class="form-control" name="secret_key" placeholder="Enter SECRET KEY"
+                required="required"></div>
+          </div>
+        </div>
+        <div class="form-group">
+          <select id="product" class="form-control" name="product">
             <option value="ALGOEUR">ALGO/EUR</option>
             <option value="ALGOGBP">ALGO/GBP</option>
             <option value="ALGOUSD">ALGO/USD</option>
@@ -68,12 +71,12 @@
             <option value="BTCEUR">BTC/EUR</option>
             <option value="BTCGBP">BTC/GBP</option>
             <option value="BTCUSDT">BTC/USDT</option>
-            <option value="BTC-USDC">BTC/USDC</option>
-            <option value="CGLD-BTC">CGLD/BTC</option>
-            <option value="CGLD-EUR">CGLD/EUR</option>
-            <option value="CGLD-GBP">CGLD/GBP</option>
-            <option value="CGLD-USD">CGLD/USD</option>
-            <option value="COMP-BTC">COMP/BTC</option>
+            <option value="BTCUSDC">BTC/USDC</option>
+            <option value="CGLDBTC">CGLD/BTC</option>
+            <option value="CGLDEUR">CGLD/EUR</option>
+            <option value="CGLDGBP">CGLD/GBP</option>
+            <option value="CGLDUSD">CGLD/USD</option>
+            <option value="COMPBTC">COMP/BTC</option>
             <option value="COMP-USD">COMP/USD</option>
             <option value="CVC-USDC">CVC/USDC</option>
             <option value="DAI-USD">DAI/USD</option>
@@ -147,19 +150,42 @@
             <option value="ZRX-BTC">ZRX/BTC</option>
             <option value="ZRX-EUR">ZRX/EUR</option>
             <option value="ZRX-USD">ZRX/USD</option>
-        </select>
-        <label for="margin_percentage" >Margin Percentage</label>
-        <input type="number" step="0.01" name="margin_p" id="inputEmail" class="form-control" placeholder="Enter Margin Percentage to buy at" required autofocus>
-        <label for="sell_percentage" >Sell Percentage</label>
-        <input type="number" step="0.01" name="sell_p" id="inputPassword" class="form-control" placeholder="SELL PERCENTAGE" required>
-        <label for="sell_percentage" >Number of Trades</label>
-        <input type="number" name="trades" id="inputPassword" class="form-control" placeholder="NO OF TRADES" required>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">START</button>
-        <p class="mt-5 mb-3 text-muted">&copy; 2017-2021</p>
-    </form>
+          </select>
+        </div>
+        <div class="form-group">
+          <input type="number" step="0.01" class="form-control" name="margin_p" placeholder="Enter Buy Margin Percent"
+            required="required">
+        </div>
+        <div class="form-group">
+          <input type="number" step="0.01" class="form-control" name="sell_p" placeholder="Enter Sell Percent"
+            required="required">
+        </div>
+        <div class="form-group">
+          <input type="number" class="form-control" name="trades" placeholder="Enter Number of Trades "
+            required="required">
+        </div>
+        <div class="form-group">
+          <button type="button" id="run" class="btn btn-success btn-lg btn-block">START</button>
+        </div>
+      </form>
+      <button class="close-btn">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
+  {% if checker == True %}
+  {% block content %}
+  {{ current.Current(users["api_key"], users["secret_key"], users["product"], users["margin_p"], users["sell_p"],
+  users["trades"])}}
+  {% endblock content %}
+  {% endif %}
 
 
-
+  <!-- javascript -->
+  <script src="{{ url_for('static', filename='all.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='jquery.js') }}"></script>
+  <script src="{{ url_for('static', filename='bootstrap.js') }}"></script>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
 </body>
 
 </html>

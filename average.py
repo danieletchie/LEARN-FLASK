@@ -5,6 +5,7 @@ from functions import Buy, Sell
 import time
 # Insert API and Secret key in quotation mark
 
+
 def Current(api_key, secret_key, product, margin_p, sell_p, trades):
     client = Client(api_key, secret_key)
     current_symbol = product
@@ -12,7 +13,6 @@ def Current(api_key, secret_key, product, margin_p, sell_p, trades):
     btc_balance = client.get_asset_balance(asset="BTC")
     usdt_balance = client.get_asset_balance(asset="USDT")
     # all_orders = client.get_all_orders(symbol=current_symbol)
-
 
     buy_id = []
     sell_id = []
@@ -35,10 +35,11 @@ def Current(api_key, secret_key, product, margin_p, sell_p, trades):
         btc_price = float(btc_price["price"])
         if len(open_orders) < 1:
             print(btc_price)
-            print(f"Started calculating buy order count currently at {counter}")
+            print(
+                f"Started calculating buy order count currently at {counter}")
             buy_price = btc_price - (btc_price * margin_p)
             buy_price = round(buy_price, 2)
-            buy_order = Buy(current_symbol,0.01,buy_price)
+            buy_order = Buy(current_symbol, 0.01, buy_price)
             print(buy_price)
             buy_id.append(buy_order['orderId'])
             counter += 1
@@ -51,11 +52,13 @@ def Current(api_key, secret_key, product, margin_p, sell_p, trades):
             print("Initing sell order")
             for id in buy_id:
                 print("Looping through buy order id")
-                order = client.get_order(symbol= current_symbol, orderId= id)
+                order = client.get_order(symbol=current_symbol, orderId=id)
                 while True:
                     try:
-                        order = client.get_order(symbol= current_symbol, orderId= id)
+                        order = client.get_order(symbol=current_symbol, orderId=id)
+                        print("check buy order status ")
                         if order['status'] == "FILLED":
+                            print(f"Calculating Sell Price")
                             order_price = float(order["price"])
                             sell_price = order_price + (order_price * sell_p)
                             sell_price = round(sell_price, 2)
@@ -64,15 +67,15 @@ def Current(api_key, secret_key, product, margin_p, sell_p, trades):
                             sell_id.append(sell_order["orderId"])
                             counter += 1
                             print(sell_id)
-                            print(f"Place Sell order at {sell_price}")
+                            print(
+                                f"Successfully Placed Sell order at {sell_price}")
                             break
-                    except Exception as e:
-                        print(f"There was an error {e} retrying soon ")
+                    except Exception:
+                        print("There was an error retrying soon ")
                         continue
                     time.sleep(20)
-                
-            break
 
+            break
 
 
 # while trades <= 3:

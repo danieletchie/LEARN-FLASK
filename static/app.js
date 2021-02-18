@@ -5,8 +5,31 @@
 const modalBtn = document.querySelector(".modal-btn");
 const closeBtn = document.querySelector(".close-btn");
 const modal = document.querySelector(".modal-overlay");
+const my_Form = document.getElementById("form")
 const modalToggle = () => modal.classList.toggle("open-modal");
+const btn = document.querySelector("#run");
+const run = document.querySelector("#running")
+
+
+btn.addEventListener("click", (e) => {
+    console.log("I was just clicked")
+    const my_Form = document.getElementById("form")
+    e.preventDefault()
+    let modal = document.querySelector(".modal-overlay");
+    run.removeAttribute("hidden")
+    console.log(my_Form)
+    my_Form.submit()
+    console.log("done")
+    modal.classList.remove("open-modal")
+    let inputs = document.querySelectorAll("input")
+    console.log("done")
+    inputs.forEach(element => {
+        element.value = ""
+    });
+    
+})
 
 modalBtn.addEventListener("click", modalToggle)
 
 closeBtn.addEventListener("click", modalToggle)
+
