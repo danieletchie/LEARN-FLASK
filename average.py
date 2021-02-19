@@ -13,7 +13,7 @@ def Current(api_key, secret_key, product, quantity, margin_p, sell_p, trades):
             current_symbol = product
             open_orders = client.get_open_orders(symbol=current_symbol)
             btc_balance = client.get_asset_balance(asset="ETH")
-            usdt_balance = client.get_asset_balance(asset="GBP")
+            usdt_balance = client.get_asset_balance(asset="LTC")
             # all_orders = client.get_all_orders(symbol=current_symbol)
 
             buy_id = []
