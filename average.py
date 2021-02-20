@@ -39,6 +39,8 @@ def Current(api_key, secret_key, product, quantity, margin_p, sell_p, trades):
                     print(f"The current price is {btc_price}")
                     print(
                         f"Started calculating buy ordern \n number of trade currently at {counter}")
+                    fees = client.get_trade_fee(symbol=current_symbol)
+                    print(f"the trading fee is {fees}")
                     buy_price = btc_price - (btc_price * margin_p)
                     buy_price = round(buy_price, 2)
                     print(f"ABOUT TO PLACE BUY ORDER")
