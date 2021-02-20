@@ -35,7 +35,7 @@ def Current(api_key, secret_key, product, quantity, margin_p, sell_p, trades):
                 print(f"starting running counter = {counter}")
                 btc_price = client.get_symbol_ticker(symbol=current_symbol)
                 btc_price = float(btc_price["price"])
-                if len(open_orders) < 5:
+                if len(open_orders) < 100:
                     print(btc_price)
                     print(
                         f"Started calculating buy order count currently at {counter}")
