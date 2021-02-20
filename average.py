@@ -41,11 +41,12 @@ def Current(api_key, secret_key, product, quantity, margin_p, sell_p, trades):
                         f"Started calculating buy order count currently at {counter}")
                     buy_price = btc_price - (btc_price * margin_p)
                     buy_price = round(buy_price, 2)
+                    print(f"ABOUT TO PLACE BUY ORDER")
                     buy_order = Buy(current_symbol, quantity, buy_price)
                     print(buy_price)
                     buy_id.append(buy_order['orderId'])
                     counter += 1
-                    print(len(buy_id))
+                    print(f"Successfully Placed Buy Order at {buy_price}")
                     continue
                 else:
                     print("you still have one open order kindly wait or exit")
