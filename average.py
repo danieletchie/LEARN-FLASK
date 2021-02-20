@@ -12,7 +12,7 @@ def Current(api_key, secret_key, product, quantity, margin_p, sell_p, trades):
             client = Client(api_key, secret_key)
             current_symbol = product
             open_orders = client.get_open_orders(symbol=current_symbol)
-            btc_balance = client.get_asset_balance(asset="ETH")
+            btc_balance = client.get_asset_balance(asset="BNB")
             usdt_balance = client.get_asset_balance(asset="GBP")
             # all_orders = client.get_all_orders(symbol=current_symbol)
 
@@ -28,7 +28,7 @@ def Current(api_key, secret_key, product, quantity, margin_p, sell_p, trades):
 
             open_orders = client.get_open_orders(symbol=current_symbol)
             print(f"Welcome your BTC balance is {btc_balance}")
-            print(f"Your USDT balance is {usdt_balance}")
+            print(f"Your GBP balance is {usdt_balance}")
             print(f"You have {len(open_orders)} Open Order")
             while counter < trades:
                 open_orders = client.get_open_orders(symbol=current_symbol)
