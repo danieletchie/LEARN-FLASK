@@ -36,9 +36,9 @@ def Current(api_key, secret_key, product, quantity, margin_p, sell_p, trades):
                 btc_price = client.get_symbol_ticker(symbol=current_symbol)
                 btc_price = float(btc_price["price"])
                 if len(open_orders) < 100:
-                    print(btc_price)
+                    print(f"The current price is {btc_price}")
                     print(
-                        f"Started calculating buy order count currently at {counter}")
+                        f"Started calculating buy ordern \n number of trade currently at {counter}")
                     buy_price = btc_price - (btc_price * margin_p)
                     buy_price = round(buy_price, 2)
                     print(f"ABOUT TO PLACE BUY ORDER")
