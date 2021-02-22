@@ -5,9 +5,9 @@ client = Client(api_key_new, api_secret_new)
 def Buy(symbol,quantity,price):
     buy_order = client.create_order(
     symbol= symbol,
-    side=SIDE_BUY,
-    type=ORDER_TYPE_LIMIT,
-    timeInForce=TIME_IN_FORCE_GTC,
+    side="BUY",
+    type="LIMIT",
+    timeInForce="GTC",
     quantity= quantity,
     price= price)
     return buy_order
