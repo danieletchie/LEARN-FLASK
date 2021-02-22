@@ -1,7 +1,6 @@
 from binance.client import Client
 # from settings import api_key_new, api_secret_new
 # import settings as s
-from functions import Buy, Sell
 import time
 # Insert API and Secret key in quotation mark
 
@@ -54,7 +53,10 @@ def Current(api_key, secret_key, product, amount, margin_p, sell_p, trades):
                     print(f"Quantity Entered {quantity}")
                     print(f"Buy price is {buy_price} and current price is {btc_price}")
                     print(f"ABOUT TO PLACE BUY ORDER")
-                    buy_order = Buy(current_symbol, quantity, buy_price)
+                    buy_order = client.order_limit_buy(
+                        symbol=current_symbol,
+                        quantity=quantity,
+                        price=buy_price)
                     print(f"{buy_price}")
                     buy_id.append(buy_order['orderId'])
                     counter += 1
@@ -77,7 +79,10 @@ def Current(api_key, secret_key, product, amount, margin_p, sell_p, trades):
                                     sell_price = order_price + (order_price * sell_p)
                                     sell_price = round(sell_price, 2)
                                     sell_qty = float(order["origQty"])
-                                    sell_order = Sell(current_symbol, sell_qty, sell_price)
+                                    buy_order = client.order_limit_sell(
+                                        symbol=current_symbol,
+                                        quantity=sell_qty,
+                                        price=sell_price)
                                     sell_id.append(sell_order["orderId"])
                                     counter += 1
                                     print(sell_id)
