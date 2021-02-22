@@ -91,7 +91,7 @@ def Current(api_key, secret_key, product, amount, margin_p, sell_p, trades):
                             except Exception:
                                 print("There was an error retrying soon ")
                                 continue
-                            time.sleep(20)
+                            time.sleep(5)
 
                     break
         except Exception as e:
