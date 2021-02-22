@@ -31,7 +31,7 @@ def Current(api_key, secret_key, product, amount, margin_p, sell_p, trades):
             print(f"Your GBP balance is {usdt_balance}")
             print(f"You have {len(open_orders)} Open Order")
             fees = client.get_trade_fee(symbol=current_symbol)
-            print(f"the trading fee is {fees["tradefee"]}")
+            print(f"the trading fee is {fees}")
             while counter < trades:
                 open_orders = client.get_open_orders(symbol=current_symbol)
                 print(f"starting running counter = {counter}")
