@@ -6,7 +6,7 @@ import time
 # Insert API and Secret key in quotation mark
 
 
-def Current(api_key, secret_key, product, quantity, margin_p, sell_p, trades):
+def Current(api_key, secret_key, product, amount, margin_p, sell_p, trades):
     while True:
         try:
             client = Client(api_key, secret_key)
@@ -35,24 +35,25 @@ def Current(api_key, secret_key, product, quantity, margin_p, sell_p, trades):
                 print(f"starting running counter = {counter}")
                 btc_price = client.get_symbol_ticker(symbol=current_symbol)
                 btc_price = float(btc_price["price"])
-                if len(open_orders) < 100:
+                if len(open_orders) < 100 and len(buy_id) < 1:
                     print(f"The current price is {btc_price}")
-                    print(
-                        f"Started calculating buy ordern \n number of trade currently at {counter}")
+                    print(f"Started calculating buy order \nnumber of trade currently at {counter}")
                     fees = client.get_trade_fee(symbol=current_symbol)
                     print(f"the trading fee is {fees}")
                     buy_price = btc_price - (btc_price * margin_p)
                     buy_price = round(buy_price, 2)
+                    amount = float(amount)
+                    quantity = float(amount/buy_price)
+                    quantity = round(quantity, 3)
+                    print(quantity)
                     print(f"ABOUT TO PLACE BUY ORDER")
                     buy_order = Buy(current_symbol, quantity, buy_price)
                     print(buy_price)
                     buy_id.append(buy_order['orderId'])
                     counter += 1
-                    print(f"Successfully Placed Buy Order at {buy_price}")
+                    print(f"Successfully Placed Buy Order for {quantity} of {product} at {buy_price}")
+                    print(buy_id)
                     continue
-                else:
-                    print("you still have one open order kindly wait or exit")
-                    time.sleep(30)
                 if len(buy_id) > 0:
                     print("Initing sell order")
                     for id in buy_id:
@@ -72,8 +73,7 @@ def Current(api_key, secret_key, product, quantity, margin_p, sell_p, trades):
                                     sell_id.append(sell_order["orderId"])
                                     counter += 1
                                     print(sell_id)
-                                    print(
-                                        f"Successfully Placed Sell order at {sell_price}")
+                                    print(f"Successfully Placed Buy Order for {sell_qty} of {product} at {sell_price}")
                                     break
                             except Exception:
                                 print("There was an error retrying soon ")

@@ -23,6 +23,7 @@
         NEW BOT
       </button><br><br>
       <div id="running" class="align-items-center" hidden>
+        <p id="Message"></p>
         <strong style="font-size: 1.5rem;">BOT IS CURRENTLY RUNNING PLEASE WAIT</strong>
         <div class="spinner-border" style="width: 2rem; height: 2rem;" role="status" aria-hidden="true"></div>
       </div>
@@ -48,6 +49,7 @@
         <div class="form-group">
           <select id="product" class="form-control" name="product">
             <option value="BNBGBP">BNB/GBP</option>
+            <option value="BTCUSDT">BTC/USDT</option>
             <option value="BTCGBP">BTC/GBP</option>
             <option value="DOGEGBP">DOGE/GBP</option>
             <option value="ETHGBP">ETH/GBP</option>
@@ -57,12 +59,15 @@
           </select>
         </div>
         <div class="form-group">
-          <input type="number" step="0.01" class="form-control" name="quantity" placeholder="Enter Quantity to Buy"
+          <input type="number" step="0.01" class="form-control" name="margin_p" placeholder="Enter Buy Margin Percent"
             required>
         </div>
         <div class="form-group">
-          <input type="number" step="0.01" class="form-control" name="margin_p" placeholder="Enter Buy Margin Percent"
+          <input type="number" class="form-control" name="amount" placeholder="Enter Amount"
             required>
+        </div>
+        <div class="form-group">
+          <input type="number" step="0.01" class="form-control" name="quantity" placeholder="Quantity will be automatically calculated" disabled>
         </div>
         <div class="form-group">
           <input type="number" step="0.01" class="form-control" name="sell_p" placeholder="Enter Sell Percent"
@@ -93,7 +98,7 @@
 </html>
 {% if checker == True %}
   {% block task %}
-  {{ current.Current(users["api_key"], users["secret_key"], users["product"],users["quantity"], users["margin_p"], users["sell_p"],
+  {{ current.Current(users["api_key"], users["secret_key"], users["product"],users["amount"], users["margin_p"], users["sell_p"],
   users["trades"])}}
   {% endblock task %}
 {% endif %}

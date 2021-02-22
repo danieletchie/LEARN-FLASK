@@ -15,11 +15,11 @@ def test():
         api_key = request.form["api_key"]
         secret_key = request.form["secret_key"]
         product = request.form["product"]
-        quantity = request.form["quantity"]
+        amount = request.form["amount"]
         margin_p = float(request.form["margin_p"])
         sell_p = float(request.form["sell_p"])
         trades = int(request.form["trades"])
-        users = {"api_key": api_key, "secret_key": secret_key, "product": product, "quantity": quantity,
+        users = { "api_key": api_key, "secret_key": secret_key, "product": product, "amount": amount,
                  "margin_p": margin_p, "sell_p": sell_p, "trades": trades}
         checker = True
 
