@@ -10,6 +10,7 @@ def Current(api_key, secret_key, product, amount, margin_p, sell_p, trades):
     while True:
         try:
             client = Client(api_key, secret_key)
+            print(client.API_URL)
             current_symbol = product
             open_orders = client.get_open_orders(symbol=current_symbol)
             btc_balance = client.get_asset_balance(asset="BNB")
