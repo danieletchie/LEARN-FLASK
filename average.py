@@ -46,11 +46,12 @@ def Current(api_key, secret_key, product, amount, margin_p, sell_p, trades):
                     buy_price = btc_price * margin_p
                     buy_price = round(buy_price, 2)
                     amount = float(amount)
-                    print(f"Margin Percent Entered {margin_p} {type(margin_p)}")
+                    print(f"Margin Percent Entered {margin_p}")
                     print(f"Amount Entered {amount}")
                     quantity = float(amount/buy_price)
                     quantity = round(quantity, 3)
                     print(f"Quantity Entered {quantity}")
+                    print(f"Buy price is {buy_price} and current price is {btc_price}")
                     print(f"ABOUT TO PLACE BUY ORDER")
                     buy_order = Buy(current_symbol, quantity, buy_price)
                     print(f"{buy_price}")
