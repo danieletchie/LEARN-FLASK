@@ -40,7 +40,8 @@ def Current(api_key, secret_key, product, amount, margin_p, sell_p, trades):
                     print(f"Started calculating buy order \n number of trade currently at {counter}")
                     # fees = client.get_trade_fee(symbol=current_symbol)
                     # print(f"the trading fee is {fees}")
-                    margin_p = 1 - float(margin_p)
+                    margin_p = 1 - float(margin_p / 100)
+                    print(margin_p)
                     margin_p = round(margin_p, 2)
                     buy_price = btc_price * margin_p
                     buy_price = round(buy_price, 2)
@@ -69,9 +70,9 @@ def Current(api_key, secret_key, product, amount, margin_p, sell_p, trades):
                                 print("check buy order status ")
                                 if order['status'] == "FILLED":
                                     print(f"Calculating Sell Price")
-                                    sell_p = 1 - float(sell_p)
                                     order_price = float(order["price"])
-                                    sell_price = order_price * sell_p
+                                    sell_p = float(sell_p / 100)
+                                    sell_price = order_price + (order_price * sell_p)
                                     sell_price = round(sell_price, 2)
                                     sell_qty = float(order["origQty"])
                                     sell_order = Sell(current_symbol, sell_qty, sell_price)
