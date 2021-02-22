@@ -30,6 +30,8 @@ def Current(api_key, secret_key, product, amount, margin_p, sell_p, trades):
             print(f"Welcome your BTC balance is {btc_balance}")
             print(f"Your GBP balance is {usdt_balance}")
             print(f"You have {len(open_orders)} Open Order")
+            fees = client.get_trade_fee(symbol=current_symbol)
+            print(f"the trading fee is {fees["tradefee"]}")
             while counter < trades:
                 open_orders = client.get_open_orders(symbol=current_symbol)
                 print(f"starting running counter = {counter}")
@@ -38,8 +40,6 @@ def Current(api_key, secret_key, product, amount, margin_p, sell_p, trades):
                 if len(open_orders) < 100 and len(buy_id) < 1:
                     print(f"The current price is {btc_price}")
                     print(f"Started calculating buy order \n number of trade currently at {counter}")
-                    # fees = client.get_trade_fee(symbol=current_symbol)
-                    # print(f"the trading fee is {fees}")
                     margin_p = 1 - float(margin_p / 100)
                     print(margin_p)
                     margin_p = round(margin_p, 2)
